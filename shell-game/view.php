@@ -32,14 +32,12 @@
         echo $cup1->show();
         $ball = new ball("red");
         echo $ball->show();
-        ?>
-      </div>
-        <?php
-        $cup2 = new cup("green", "plastic");
+        $cup2 = new cup("yellow", "plastic");
         echo $cup2->show();
         $cup3 = new cup("yellow", "plastic");
         echo $cup3->show();
         ?>
+      </div>
         <div class="clear"></div>
     </div>
       <?php
