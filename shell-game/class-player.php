@@ -9,7 +9,7 @@ class player{
   }
 
   public function show(){
-    return '<div class="player"><strong>'. $this->name .': '. $this->amount .'</strong></div>';
+    return "<div class='player'><strong>$this->name: $this->amount</strong></div>";
   }
 }
-?>
+ ?>
