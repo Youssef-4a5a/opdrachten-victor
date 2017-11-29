@@ -4,7 +4,7 @@ class cup{
   public $type = null;
   public $positionUp = null;
 
-  public function __construct(string $color, string $type){
+  public function __construct($color, $type){
     $this->color = $color;
     $this->type = $type;
   }
@@ -18,9 +18,9 @@ class cup{
   }
 
   public function show(){
-    if(putDown() == true){
+    if($this->positionUp == true){
       return '<div class="cup '. $this->color .' liftup"></div>';
-    } elseif (liftUp() == true){
+    } elseif ($this->positionUp == false){
       return '<div class="cup '. $this->color .' putdown"></div>';
     }
   }

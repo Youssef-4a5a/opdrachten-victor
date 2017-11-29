@@ -3,7 +3,7 @@ class player{
   public $name = null;
   public $amount = null;
 
-  public function __construct(string $name, int $amount){
+  public function __construct($name, $amount){
     $this->name = $name;
     $this->amount = $amount;
   }

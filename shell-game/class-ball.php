@@ -2,7 +2,7 @@
 class ball{
   public $color = null;
 
-  public function __construct(string $color){
+  public function __construct($color){
     $this->color = $color;
   }
 
