@@ -2,8 +2,11 @@
 class player{
   public $name = null;
   public $amount = null;
-
-  public function __construct($name, $amount){
+  
+  /*
+   * 
+   */
+  public function __construct($name='', $amount=0){
     $this->name = $name;
     $this->amount = $amount;
   }

@@ -1,15 +1,26 @@
 <?php
 class Game{
-  public $amountPerGame = null;
-
-  public function __construct($amountPerGame){
-    $this->amountPerGame = $amountPerGame;
+  public $amountPerGame;
+  
+  public function __construct($amount){
+    if(isset($_COOKIE['Amount'])){
+      $this->amountPerGame = $_COOKIE['Amount'];
+    }
+    
+    else{
+    $this->amountPerGame = $amount;
+    }
   }
 
-  public function addAmount(){
-    $this->amountPerGame += 20;
+  public function getAmount(){
+    return $this->amountPerGame;
+  }
+  
+  public function start(){
+      
   }
 }
+
 
 
 ?>

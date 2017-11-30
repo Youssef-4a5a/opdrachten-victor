@@ -105,6 +105,24 @@ class Car implements CarInterface, ShowInfoInterface{
   }
 }
 
+class MagicCar{
+    public function __set($name, $value) {
+        if($name == 'color'){
+            if($value == 'Geel' || $value == 'Groen' || $value == 'Rood'){
+                $this->color = $value;
+            }
+            else{
+                $this->color = null;
+            }
+        }
+    }
+    
+    public function __get($name) {
+        if($name == 'color'){
+            return $this->color;
+        }
+    }
+}
 
 
 $tim = new person('Tim', 21);
@@ -120,5 +138,9 @@ echo $car1->ShowInfo();
 echo $car1->checkEco();
 echo $car1->setColor('Black');
 echo $car1->checkColor();
+
+$frank = new MagicCar();
+$frank->color = 'Groen';
+echo $frank->color;
 
 ?>

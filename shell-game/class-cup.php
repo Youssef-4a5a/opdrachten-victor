@@ -6,7 +6,7 @@ class cup{
   public $ball = null;
   public $id = null;
 
-  public function __construct($color, $type, $id){
+  public function __construct($color='', $type='', $id=1){
     $this->color = $color;
     $this->type = $type;
     $this->id = $id;
