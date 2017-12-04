@@ -1,45 +1,60 @@
 <?php
 
 session_start();
-error_reporting(0);
-
+//Including the required classes
 include 'class-ball.php';
 include 'class-player.php';
 include 'class-cup.php';
 include 'class-game.php';
 
+//amount
+$amount = new Game(100);
+
+//Instance of a new Ball with setter method.
 $ball = new Ball('blue');
-$player = new Player('Youssef', 100);
-$amountPerGame = new Game(100);
+
+//Instance of a new player
+$player = new HumanPlayer('Youssef', $_COOKIE['Amount']);
+
+//Instance of a new Cup
+
+$cups[1] = new Cup('yellow', 'plastic', 1);
+$cups[2] = new Cup('blue', 'plastic', 2);
+$cups[3] = new Cup('red', 'plastic', 3);
 
 
-$cups[1] = new Cup('blue', 'plastic', 1);
-$cups[2] = new Cup('red', 'plastic', 2);
-$cups[3] = new Cup('yellow', 'plastic', 3);
+
 
 if (ISSET($_GET['show_cup'])) {
     $cups[$_GET['show_cup']]->liftUp();
 }
 
 if (ISSET($_GET['startGame'])) {
-//    if ($_SESSION["ball"] == $_GET["show_cup"]) {
-//        setcookie('Amount', $amountPerGame->amountPerGame += 20);
-//        echo $amountPerGame->amount;
-//        echo 'Gewonnen!';
-//    }
-    $random = rand(1, 3);
-    $_SESSION["ball"] = $random;
+    $amount->start();
 }
 
 if (ISSET($_SESSION["ball"])) {
     $cups[$_SESSION["ball"]]->ball = $ball->show();
 }
+if (ISSET($_GET["show_cup"])) {
+    if ($_SESSION["ball"] == $_GET["show_cup"]) {
+        setcookie('Amount', $amount->amountPerGame += 20);
+        ?>
+        <script>alert('You win!');</script>
+        <?php
 
-if ($_SESSION["ball"] == $_GET["show_cup"]) {
-    setcookie('Amount', $amountPerGame->amountPerGame += 20);
-    echo $amountPerGame->amount;
-    echo 'Gewonnen!';
+        $amount->start();
+        $cups[1]->putDown();
+        $cups[1]->show();
+        $cups[2]->putDown();
+        $cups[2]->show();
+        $cups[3]->putDown();
+        $cups[3]->show();
+    } else {
+        echo 'Too bad...';
+    }
 }
+
 
 include 'view.php';
 ?>
